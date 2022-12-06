@@ -3,7 +3,7 @@
   --main-color-dark: #1E1D2A;
   --secondary-color: #A48EF7;
   --light: #FFF;
-  --grey: #B2B2B2;
+  --grey: rgba(255, 255, 255, 0.747);
 }
 
 * {
@@ -72,6 +72,7 @@ li {
   color: var(--light);
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 #header .logo span {
@@ -93,7 +94,7 @@ li {
   display: block;
   font-size: 14px;
   letter-spacing: 1px;
-  color: var(--light);
+  color: var(--grey);
   text-decoration: none;
   transition: all .5s ease;
 }
@@ -103,72 +104,22 @@ li {
   color: var(--secondary-color);
 }
 
-#header .navbar .language {
-  position: relative;
-  width: 120px;
-  margin-left: 40px;
-  font-weight: bold;
-}
-
-#header .language .language-selected {
-  display: flex;
-  align-items: center;
-  color: var(--light);
+#header .navbar #language label {
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 
-#header .language .language-selected::before {
-  content: "";
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background-image: url(./assets/flag-en.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-}
-
-#header .language ul {
-  position: absolute;
-  width: 140px;
-  background-color: rgba(164, 142, 247, 0.5);
+#header #language input[type="checkbox"] {
   display: none;
 }
 
-#header .language ul li a {
-  color: var(--light);
-  display: block;
-  padding: 10px ;
+#language input[type="checkbox"] + label::before {
+  content: url(./assets/flag-pt.png);
 }
 
-#header .language ul li:hover {
-  background-color: rgba(164, 142, 247, 0.8);
-}
-
-#header .language ul li a:hover {
-  color: var(--light);
-}
-
-#header .language ul li a::before {
-  content: "";
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-
-a.en:before {
-  background-image: url(./assets/flag-en.png);
-}
-a.pt:before {
-  background-image: url(./assets/flag-pt.png);
-}
-
-#header .navbar .language:hover ul {
-  display: block;
+#language input[type="checkbox"]:checked + label::before {
+  content: url(./assets/flag-en.png);
 }
 
 #header .navbar #nav-toggle{
@@ -217,9 +168,10 @@ a.pt:before {
 #header .h-content p {
   width: 100%;
   padding: 10px 0 40px;
-  font-size: 16px;
+  font-size: 17px;
   letter-spacing: .5px;
-  color: var(--light);
+  line-height: 30px;
+  color: var(--grey);
 }
 
 #header .h-content .intro-buttons {
@@ -321,6 +273,7 @@ a.pt:before {
   margin: auto;
   padding: 0 0 20px;
   font-size: 16px;
+  line-height: 30px;
   color: var(--grey);
 }
 
@@ -364,6 +317,13 @@ a.pt:before {
 
 #about .card p {
   color: var(--grey);
+}
+
+@media screen and (min-width: 769px) {
+  #header .h-content p {
+    width: 500px;
+    word-break: break-all;
+  }
 }
 
 @media screen and (max-width: 768px) {
