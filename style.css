@@ -17,9 +17,9 @@ html {
 }
 
 body {
+  position: relative;
   width: 100%;
   height: auto;
-
   font-family: 'DM Sans', sans-serif;
   background-color: var(--main-color);
 }
@@ -28,14 +28,8 @@ li {
   list-style: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.btn,
-.nav-links ul li {
+h1, h2, h3, h4, h5, h6,
+.btn, .nav-links ul li {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -43,7 +37,6 @@ h6,
   width: 200px;
   height: 50px;
   border: none;
-
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 1px;
@@ -51,7 +44,26 @@ h6,
   cursor: pointer;
 }
 
+.anim-1 {
+  animation: appear 1s forwards;
+}
+.anim-2 {
+  animation: appear 1.5s forwards;
+}
+.anim-3 {
+  animation: appear 2s forwards;
+}
 
+@keyframes appear {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 
 #header {
   width: 100%;
@@ -523,9 +535,10 @@ h6,
   color: var(--light);
   font-size: 28px;
   margin: 15px auto 50px;
+  text-align: center;
 }
 
-#contact .contact-title span {
+#contact .contact-title .span-2 {
   color: var(--secondary-color);
 }
 
@@ -615,17 +628,17 @@ h6,
 
 ::-webkit-input-placeholder {
   color: var(--main-color-dark);
-  opacity: .4;
+  opacity: .6;
 }
 
 :-ms-input-placeholder {
   color: var(--main-color-dark);
-  opacity: .4;
+  opacity: .6;
 }
 
 ::placeholder {
   color: var(--main-color-dark);
-  opacity: .4;
+  opacity: .6;
 }
 
 #contact .c-form-container textarea {
@@ -651,7 +664,7 @@ footer {
 
 footer section {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
@@ -677,16 +690,28 @@ footer .section-2 a {
 
 footer a.logo {
   padding: 15px 0;
-  font: 900 18px 'Poppins', sans-serif;
+  font: 900 24px 'Poppins', sans-serif;
   letter-spacing: 1px;
   color: var(--light);
   text-decoration: none;
+}
+
+footer a.logo span {
+  color: var(--secondary-color);
 }
 
 footer .social-links {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+footer .social-links li {
+  transition: all .5s ease;
+}
+
+footer .social-links li:hover {
+  scale: 1.1;
 }
 
 footer .social-links li a {
@@ -702,6 +727,38 @@ footer .social-links .footer-icon{
   width: 20px;
   height: 20px;
   color: var(--secondary-color);
+}
+
+.scrollTop {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  right: 40px;
+  bottom: 40px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  display: grid;
+  place-content: center;
+}
+
+.scrollTop .icon {
+  width: 34px;
+  height: 34px;
+  color: var(--main-color-dark);
+}
+
+.scrollTop:hover .icon,
+.scrollTop:focus .icon {
+  animation: moveUp 1s infinite;
+}
+
+@keyframes moveUp {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -786,6 +843,16 @@ footer .social-links .footer-icon{
   }
   #about .text-section p {
     width: 100%;
+  }
+  #portfolio .project-info {
+    bottom: 0px;
+    background-color: rgba(164, 142, 247, .5);
+  }
+  #portfolio .project-card:focus {
+    transform: translateY(-10px);
+  }
+  #portfolio .project-card:hover .project-info {
+    transform: translateY(0px);
   }
   footer section {
     justify-content: center;
